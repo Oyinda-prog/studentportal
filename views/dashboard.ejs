@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+    <%- include('../Navbar/header.ejs') %>
+  
+    <table class=" table table-hovered table-striped col-lg-7">
+  <tr>
+    <td>S/N</td>
+    <td>First Name</td>
+    <td>Last Name</td>
+    <td>Email Address</td>
+    <td>Actions</td>
+  </tr>
+  <% for( let index = 0; index < result.length; index++ ) { %>
+    <tr>
+        <td><%= index+1 %></td>
+        <td><%= result[index].firstname %></td>
+        <td><%= result[index].lastname %></td>
+        <td><%= result[index].email %></td>
+        <td>
+            <form action="/delete" method="post">
+            <input type="hidden" class="form-control mx-3" name="email" value="<%= result[index].email  %>">
+            <button type="submit" class="btn btn-danger my-3">Delete</button>
+        </form>
+            <form action="/edit" method="post">
+                <input type="hidden" class="form-control me-3" name="email" value="<%= result[index].email  %>">
+            <button type="submit" class="btn btn-success">Edit</button>
+        </form>
+        </td>
+    </tr>
+  <% } %>
+    </table>
+   <div>Click <a href="/" style="font-size: 16px;">sign up</a> to create acccount with us</div> 
+   <div>Click <a href="/signinPage" style="font-size: 16px;">sign in</a> to log in to your dashboard</div> 
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</html>
+</body>
+</html>
